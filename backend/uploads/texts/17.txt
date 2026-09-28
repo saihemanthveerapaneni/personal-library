@@ -1,0 +1,1217 @@
+AI-Based	Early	Prediction	of	Persistent	Childhood
+Stuttering
+AI-Based	Early	Prediction	of	Persistent	Childhood	Stuttering
+Machine	Learning	Approach	for	Pediatric	Fluency	Risk	Assessment
+Abstract
+Introduction
+Problem	Statement
+Project	Objective
+Research	Question
+Research	Hypothesis
+Specific	Objectives
+Scope	of	the	Project
+Core	Concept
+Scientific	Rationale
+Detection	vs	Prediction
+Literature	Review
+Key	Research	Papers
+Dataset	Strategy
+Proposed	System	Architecture
+Feature	Engineering
+Model	Development	Plan
+Label	Definition
+Train/Test	Splitting	Strategy
+Evaluation	Metrics
+Ethical	Considerations
+Regulatory	Considerations
+Market	Opportunity
+Competitive	Landscape
+Target	Users
+Proposed	Product	Features
+Implementation	Timeline
+Suggested	Technology	Stack
+Expected	Outcomes
+Limitations	and	Risks
+Conclusion
+AI-Based	Early	Prediction	of	Persistent	Childhood
+Stuttering
+Machine	Learning	Approach	for	Pediatric	Fluency	Risk	Assessment
+Project	Type:
+	Research	and	Development	/	AI-Enabled	Clinical	Decision	Support	
+Domain:
+	Artificial
+
+Intelligence,	Speech-Language	Pathology,	Pediatric	Healthcare,	Digital	Health	
+Prepared	by:
+	[Your	Name]
+Location:
+	Chennai,	Tamil	Nadu,	India	
+Date:
+	August	2026
+Abstract
+Developmental	stuttering	is	a	childhood-onset	fluency	disorder	characterized	by	repetitions,	prolongations,
+and	blocks	in	speech.	Although	many	preschool	children	who	begin	stuttering	recover	naturally,	a	smaller
+group	develops	persistent	stuttering	that	continues	into	adolescence	and	adulthood.	Early	identification	of
+children	at	elevated	risk	could	help	speech-language	pathologists	prioritize	assessment,	monitoring,	parent
+counselling,	and	intervention.
+This	project	proposes	an	AI-based	risk-assessment	system	that	analyzes	a	short	natural	speech	recording
+from	a	child	and	estimates	the	probability	that	early	childhood	stuttering	will	persist	rather	than	recover.	The
+proposed	system	uses	automatically	extracted	acoustic,	temporal,	disfluency,	linguistic,	and	optional	clinical-
+history	features.	It	is	designed	as	a	clinical	decision-support	tool,	not	a	diagnostic	tool,	and	provides	an
+interpretable	probabilistic	output	such	as	a	persistence-risk	score	and	the	features	that	contributed	to	that
+estimate.
+The	proposal	is	grounded	in	longitudinal	stuttering	research	showing	that	factors	including	time	since	onset,
+family	history,	stuttering	characteristics,	language	ability,	speech	sound	skills,	and	severity	are	associated
+with	persistence.	Existing	AI	research	primarily	focuses	on	detecting	stuttering	events;	long-term	prediction
+of	persistence	from	early	speech	is	a	less	developed	but	clinically	meaningful	research	gap.	Recent
+systematic-review	evidence	also	suggests	that	automatic	stuttering	detection	has	promising	reported
+performance	but	substantial	heterogeneity	across	studies,	supporting	the	need	for	careful,	externally
+validated	research.	(
+pubmed.ncbi.nlm.nih.gov
+)
+Keywords:
+	Childhood	stuttering,	stammering,	persistence	prediction,	machine	learning,	acoustic	analysis,
+speech	AI,	clinical	decision	support,	pediatric	speech	therapy.
+Introduction
+Stuttering	is	a	neurodevelopmental	speech-fluency	disorder	involving	involuntary	disruptions	such	as	sound
+or	syllable	repetitions,	prolongations,	and	speech	blocks.	It	commonly	emerges	in	early	childhood,	often
+between	ages	two	and	five.	A	substantial	proportion	of	children	recover	naturally,	while	others	develop
+persistent	stuttering	that	can	affect	communication,	educational	participation,	confidence,	and	quality	of	life.
+(
+pmc.ncbi.nlm.nih.gov
+)
+The	major	clinical	challenge	is	not	simply	identifying	whether	a	child	stutters	at	the	time	of	assessment.	The
+more	important	question	is	whether	the	child’s	early	stuttering	is	likely	to	persist	or	recover.	Existing	clinical
+research	has	identified	predictors	such	as	family	history,	age	and	duration	of	onset,	stuttering	frequency	and
+severity,	speech	sound	ability,	language	development,	and	certain	disfluency	patterns.	(
+rcslt.org
+)
+This	project	investigates	whether	machine-learning	methods	can	automatically	extract	useful	predictive
+characteristics	from	child	speech	recordings	and	combine	them	with	optional	clinical	information	to	estimate
+persistence	risk.
+Problem	Statement
+Speech-language	pathologists	often	need	to	make	early	decisions	about	whether	a	child	should	receive
+immediate	treatment,	monitoring,	parent	counselling,	or	referral	for	comprehensive	assessment.	However,
+persistence	versus	recovery	cannot	be	determined	with	certainty	from	a	single	speech	recording.
+Existing	AI	tools	generally	focus	on:
+Detecting	stuttering	events	in	an	audio	clip.
+
+Identifying	repetitions,	prolongations,	or	blocks.
+Supporting	therapy	exercises.
+Improving	fluency	or	voice	reconstruction.
+There	is	a	gap	in	systems	designed	specifically	to	answer:
+Given	a	child’s	current	speech	characteristics,	what	is	the	estimated	future	risk	that	developmental
+stuttering	will	persist	rather	than	recover?
+The	project	therefore	proposes	an	interpretable	machine-learning	model	for	
+early	persistence-risk
+prediction
+,	rather	than	a	simple	“stammering	detector.”
+Project	Objective
+To	develop	and	evaluate	a	machine-learning	system	that	predicts	the	probability	of	persistent	childhood
+stuttering	from	early	speech	characteristics	and	optional	clinical-history	information.
+Research	Question
+Can	machine-learning	models	trained	on	early	childhood	speech	characteristics	predict	whether
+developmental	stuttering	will	persist	or	recover?
+Research	Hypothesis
+Speech	characteristics	observed	during	early	childhood	contain	predictive	information	about	whether
+developmental	stuttering	will	persist	or	recover.	A	machine-learning	model	combining	acoustic,	temporal,
+disfluency,	linguistic,	and	clinical-history	features	can	provide	clinically	useful	persistence-risk	estimates.
+Specific	Objectives
+Build	an	audio-processing	pipeline	for	extracting	acoustic	and	timing	features	from	child	speech.
+Detect	and	quantify	stuttering-like	disfluencies,	including	repetitions,	prolongations,	blocks,	and	abnormal
+pauses.
+Develop	an	interpretable	baseline	model	using	Logistic	Regression,	Random	Forest,	or	XGBoost.
+Compare	audio-only,	audio-plus-transcript,	and	multimodal	models.
+Evaluate	the	model	using	child-level	train/test	splits	to	prevent	speaker	leakage.
+Measure	sensitivity,	specificity,	ROC-AUC,	precision,	recall,	F1-score,	and	probability	calibration.
+Produce	interpretable	results	showing	the	main	factors	contributing	to	each	risk	estimate.
+Design	a	prototype	web	interface	for	clinicians	or	researchers.
+Scope	of	the	Project
+Included
+Children	approximately	ages	3–6	at	baseline.
+Natural	speech	recordings	of	2–5	minutes.
+
+Acoustic,	prosodic,	temporal,	linguistic,	and	disfluency	analysis.
+Longitudinal	outcome	labels:	recovered	or	persistent.
+ML-based	risk	prediction.
+Clinician-facing	decision-support	prototype.
+Research	validation	using	publicly	available	and	restricted	research	corpora.
+Excluded
+Definitive	diagnosis	of	stuttering.
+Replacement	of	a	speech-language	pathologist.
+Treatment	recommendations	without	clinician	review.
+Use	as	an	unsupervised	consumer	diagnostic	application.
+Prediction	in	children	with	insufficient	clinical	follow-up	data.
+Core	Concept
+Input
+A	child	speaks	naturally	for	a	few	minutes	through	a	mobile	phone,	microphone,	clinic	recording	system,	or
+teletherapy	session.
+AI	Analysis
+The	model	extracts	multiple	features:
+Repetition	frequency.
+Part-word	repetitions.
+Whole-word	repetitions.
+Prolonged	sound	duration.
+Speech	blocks.
+Silent	and	filled	pauses.
+Speech	rate	and	articulation	rate.
+Syllables	per	second.
+Speech-timing	variability.
+Pitch	and	intensity	variation.
+Sentence	length	and	linguistic	complexity.
+Location	of	disfluencies	in	a	sentence.
+Optional	family	history,	age	of	onset,	and	time	since	onset.
+Output
+Estimated	persistence	risk:	72%
+Risk	category:	Elevated
+Main	contributing	factors:
+-	High	part-w ord	repetition	frequency
+-	Increased	duration	of	prolonged	sounds
+-	Abnormal	speech	timing	variability
+-	Stuttering	duration	exceeding	12	months
+-	Family	history	of	persistent	stuttering
+Clinical	note:
+This	output	is	intended	to	support-not	replace-
+assessment	by	a	qualified	speech-language	pathologist.
+
+Scientific	Rationale
+Longitudinal	research	indicates	that	childhood	stuttering	is	not	a	uniform	condition.	Some	children	recover
+spontaneously,	whereas	others	continue	to	stutter.	Research	has	associated	persistence	with	demographic,
+familial,	language,	speech-motor,	and	fluency-related	factors.	(
+rcslt.org
+)
+A	recent	study	reported	that	lower	sentence	comprehension	relative	to	word	comprehension	in	preschool
+children	who	stutter	was	associated	with	persistent	stuttering	and	stuttering	severity	at	school	age.	Research
+also	continues	to	examine	whether	characteristics	such	as	stuttering	on	content	versus	function	words	may
+predict	persistence	in	young	children.	(
+tandfonline.com
+)
+Cumulative-risk	approaches	have	combined	variables	such	as	time	since	onset,	speech	sound	skills,
+expressive	language,	and	stuttering	severity.	The	study	discussed	in	the	original	project	context	reported
+93%	sensitivity	and	65%	specificity	for	children	with	at	least	two	risk	factors	in	its	study	sample.	This
+supports	the	central	idea	that	persistence	is	better	approached	as	a	multi-factor	risk-estimation	problem	than
+as	a	single-feature	detection	task.
+Detection	vs	Prediction
+Aspect
+Stuttering	Detection
+Persistence	Prediction
+Main	question
+Is	the	child	stuttering	now?
+Will	current	childhood	stuttering	likely
+persist?
+Label
+Disfluency	present	or	absent
+Recovered	or	persistent	at	future
+follow-up
+Time	horizon
+Seconds	or	minutes
+Months	or	years
+Input
+Current	speech	clip
+Early	speech	plus	optional	history
+Clinical	use
+Assessment	assistance
+Early	triage	and	intervention	planning
+Maturity
+Relatively	established
+Emerging	research	opportunity
+Main	project	focus
+Supporting	module
+Primary	outcome
+Recent	work	has	explored	prediction	of	
+upcoming	stuttering	events
+	from	short	audio	segments,	but	this
+differs	from	predicting	long-term	persistence	versus	recovery	across	months	or	years.	(
+arxiv.org
+)
+Literature	Review
+Foundational	Clinical	Research
+Singer	et	al.	(2020)
+	conducted	a	meta-analysis	of	clinical	characteristics	associated	with	stuttering
+persistence.	It	is	a	core	source	for	identifying	clinically	supported	risk	factors.	(
+rcslt.org
+)
+Sugathan	and	Maruthy	(2020)
+	published	a	systematic	review	of	factors	associated	with	persistence	and
+recovery	in	childhood	stuttering.	(
+rcslt.org
+)
+Walsh	et	al.	(2018)
+	reviewed	predictors	for	persistence	in	childhood	stuttering,	including	family	history,
+stuttering	severity,	speech	sound	skills,	and	language-related	factors.	(
+e-cacd.org
+)
+Recent	Longitudinal	Research
+A	2025	study	found	that	preschool	children	who	stutter	and	show	lower	sentence	comprehension	relative	to
+word	comprehension	may	be	more	likely	to	have	persistent	stuttering	and	greater	stuttering	severity	at
+
+school	age.	(
+tandfonline.com
+)
+A	2026	study	examined	whether	stuttering	on	content	versus	function	words	can	predict	stuttering
+persistence	in	young	children,	indicating	that	linguistic	position	and	context	remain	active	research	areas.
+(
+discovery.researcher.life
+)
+AI	and	Stuttering	Research
+A	2026	systematic	review	and	meta-analysis	of	automated	stuttering	detection	reported	pooled	estimates	of
+86.9%	accuracy	and	73.2%	F1	score	under	study-specific	conditions.	However,	heterogeneity	was	high,
+meaning	results	vary	substantially	across	datasets	and	study	designs.	(
+pubmed.ncbi.nlm.nih.gov
+)
+The	Paediatric-HGNN	study	addressed	pediatric	disfluency	detection,	emphasizing	that	child	speech	is
+challenging	because	developing	voices	show	high	acoustic	variability	and	because	normal	childhood
+disfluency	can	resemble	stuttering.	(
+arxiv.org
+)
+A	2026	study	on	predicting	upcoming	stuttering	events	from	three-second	audio	clips	explicitly	noted	that
+most	audio-based	systems	have	focused	on	detection	rather	than	prediction.	(
+arxiv.org
+)
+Key	Research	Papers
+Persistence	and	Recovery
+1.	
+Singer,	C.	M.,	Hessling,	A.,	Kelly,	E.	M.,	Singer,	L.,	&	Jones,	R.	M.	(2020).
+	
+Clinical	characteristics
+associated	with	stuttering	persistence:	A	meta-analysis.
+	Journal	of	Speech,	Language,	and	Hearing
+Research.	(
+rcslt.org
+)
+2.	
+Sugathan,	J.,	&	Maruthy,	S.	(2020).
+	
+Predictive	factors	for	persistence	and	recovery	of	stuttering	in
+children:	A	systematic	review.
+	International	Journal	of	Speech-Language	Pathology.	(
+rcslt.org
+)
+3.	
+Walsh,	B.,	Usler,	E.,	Bostian,	A.,	Mohan,	R.,	Gerwin,	K.	L.,	Brown,	B.,	Weber,	C.,	&	Smith,	A.
+(2018).
+	
+What	are	predictors	for	persistence	in	childhood	stuttering?
+	Seminars	in	Speech	and	Language,
+39(4),	299–312.	(
+e-cacd.org
+)
+4.	
+Yairi,	E.,	&	Ambrose,	N.	G.
+	Longitudinal	research	on	childhood	stuttering	persistence	and	recovery	is
+foundational	to	the	project’s	clinical	rationale.	Their	work	is	frequently	cited	in	current	summaries	of
+natural	recovery	and	persistence.	(
+unseenprogress.com
+)
+5.	
+2025	Study.
+	
+Lower	sentence	comprehension	than	word	comprehension	in	preschool	children	who	stutter
+predicts	persistent	stuttering	and	stuttering	severity	at	school-age.
+	(
+tandfonline.com
+)
+6.	
+2026	Study.
+	
+Can	Stuttering	on	Content	Versus	Function	Words	Predict	Stuttering	Persistence	in	Young
+Children?
+	Journal	of	Speech,	Language,	and	Hearing	Research.	(
+discovery.researcher.life
+)
+AI,	Machine	Learning,	and	Speech	Analysis
+7.	
+2026	Systematic	Review.
+	
+Advancing	stuttering	detection:	A	systematic	review	and	meta-analysis.
+Reports	pooled	automatic-detection	results	but	highlights	high	heterogeneity	and	the	need	for	robust
+validation.	(
+pubmed.ncbi.nlm.nih.gov
+)
+8.	
+2026.
+	
+Predicting	Upcoming	Stuttering	Events	from	Three-Second	Audio:	Stratified	Evaluation	Reveals
+Severity-Selective	Precursors,	and	the	Model	Deploys	Fully	On-Device.
+	Focuses	on	near-term	event
+prediction	rather	than	long-term	recovery	or	persistence.	(
+arxiv.org
+)
+9.	
+2026.
+	
+Paediatric-HGNN:	A	Hybrid	Heterogeneous	Graph	Neural	Network	for	Detecting	Disfluency	in
+Children’s	Speech	via	Multiscale	Acoustic	Fusion.
+	Focuses	on	child-specific	acoustic	disfluency	detection.
+(
+arxiv.org
+)
+10.	
+2025.
+	
+Deploying	UDM	Series	in	Real-Life	Stuttered	Speech	Applications:	A	Clinical	Evaluation
+Framework.
+	Highlights	clinical	interpretability	and	real-world	assessment	deployment.	(
+arxiv.org
+)
+
+11.	
+2025.
+	
+Can	Large	Audio	Language	Models	Understand	Child	Stuttering	Speech?	Speech	Summarization,
+and	Source	Separation.
+	Examines	the	difficulty	of	applying	large	audio	models	to	child	stuttering	speech.
+(
+arxiv.org
+)
+Dataset	Strategy
+Main	Datasets
+Dataset
+Description
+Access
+Primary	Use
+FluencyBank	IISRP
+Longitudinal	speech	samples
+from	children	who	stutter,
+including	repeated
+recordings	across	time
+Restricted/password
+controlled
+Persistence/recovery
+prediction
+FluencyBank	Teaching
+Corpus
+Child	speech	and	fluency
+samples
+Research	access
+Pediatric	validation
+Purdue	Corpus
+Longitudinal	child	cohort;
+useful	for	predictor	analysis,
+though	audio	availability	is
+limited
+Restricted/limited
+Clinical-variable	research
+SEP-28K
+28,177	short	clips	labelled
+for	stuttering-event	types
+Public
+Pretraining	and	disfluency
+detection
+UCLASS
+Pediatric	stuttering	speech
+corpus
+Research	access
+Pediatric	acoustic	validation
+FluencyBank	is	a	shared	database	for	fluency	development	research,	while	the	IISRP	corpus	is	especially
+relevant	because	it	includes	repeated	samples	from	children	followed	over	time.	SEP-28K	is	widely	used	for
+stuttering-event	detection	but	consists	largely	of	podcast	audio	and	is	therefore	not	a	direct	substitute	for
+longitudinal	pediatric	data.	(
+csdisseminate.com
+)
+Data-Access	Plan
+1.	
+Start	with	SEP-28K	for	speech-event	detection	and	feature-pipeline	development.
+2.	
+Apply	for	access	to	FluencyBank	IISRP	through	an	eligible	research	institution	or	clinical	collaborator.
+3.	
+Use	IISRP	or	another	longitudinal	pediatric	corpus	for	the	actual	persistence/recovery	prediction	task.
+4.	
+Perform	external	validation	using	a	child-level	dataset	distinct	from	the	training	data.
+5.	
+Work	with	a	speech-language	pathologist	and	obtain	ethics	approval	before	collecting	new	local	clinical
+data.
+Proposed	System	Architecture
+																		CHILD	SPEECH	RECORDING
+																									2-5	minutes
+																														|
+										-----------------------------------------
+										|																		|																				|
+										v																		v																				v
+			Acoustic	Features			Transcript	Features			Clinical	Features
+										|																		|																				|
+										|																		|																				|
+			-	MFCCs													-	Sentence	length					-	Age
+			-	Pitch													-	Vocabulary											-	Sex
+			-	Energy												-	Syntax															-	Age	of	onset
+			-	Pauses												-	Word	repetitions					-	Time	since	onset
+
+			-	Timing												-	Disfluency	position		-	Family	history
+			-	Repetitions
+			-	Blocks
+			-	Prolongations
+										\																		|																		/
+											\																	|																	/
+												-----------------------------------
+																									|
+																									v
+																		Feature	Fusion	Layer
+																									|
+																									v
+																Machine	Learning	Model
+							Logistic	Regression	/	Random	Forest	/
+							XGBoost	/	LightGBM	/	Neural	Netw ork
+																									|
+																									v
+																	Probability	Calibration
+																									|
+																									v
+										Persistent	Stuttering	Risk	Estimate
+																									|
+																									v
+				Low 	Risk	/	Moderate	Risk	/	Elevated	Risk
+Feature	Engineering
+Audio	Features
+Category
+Example	Features
+Acoustic
+MFCCs,	spectral	centroid,	spectral	rolloff,	spectral	flux
+Prosodic
+Fundamental	frequency,	pitch	range,	pitch	variability,
+energy
+Temporal
+Pause	duration,	speech	rate,	articulation	rate,	syllables	per
+second
+Voice	Quality
+Jitter,	shimmer,	harmonics-to-noise	ratio
+Disfluency
+Repetition	count,	prolongation	duration,	block	frequency
+Rhythm
+Timing	variability,	syllable	duration	variation,	pause-to-
+speech	ratio
+Linguistic	Features
+Category
+Example	Features
+Lexical
+Vocabulary	diversity,	word	frequency,	sentence	length
+Syntactic
+Parse-tree	depth,	phrase	complexity,	clause	count
+Phonological
+Sound-error	patterns,	nonword	repetition	accuracy
+Disfluency	Context
+Sentence-initial	disfluency,	content-word	vs	function-word
+disfluency
+Language	Development
+Sentence	comprehension,	expressive-language	measures
+Clinical	and	History	Features
+Category
+Example	Features
+Demographic
+Age,	sex,	native	language
+
+Demographic
+Age,	sex,	native	language
+Onset
+Age	at	onset,	duration	since	onset
+Family	History
+Relatives	with	persistent	or	recovered	stuttering
+Severity
+Stuttering	frequency,	clinician	rating,	SSI-4	where	available
+Developmental
+Speech	sound	skills,	expressive	language,	receptive
+language
+Model	Development	Plan
+Baseline	Model
+The	baseline	should	prioritize	interpretability	and	work	well	with	limited	datasets.
+Input	Features
+						|
+						v
+Data	Cleaning	and	Normalization
+						|
+						v
+Logistic	Regression	/	Random	Forest	/	XGBoost
+						|
+						v
+Recovered	vs	Persistent	Probability
+Recommended	baseline	algorithms:
+Logistic	Regression.
+Random	Forest.
+XGBoost.
+LightGBM.
+Support	Vector	Machine.
+Deep-Learning	Model
+Raw 	Audio
+				|
+				v
+Pretrained	Speech	Encoder
+Wav2Vec	2.0	/	HuBERT	/	Whisper	Encoder
+				|
+				v
+Temporal	Encoder
+Transformer	/	BiLSTM	/	GRU
+				|
+				v
+Feature	Fusion
+Audio	embeddings	+	clinical	variables
+				|
+				v
+Prediction	Head
+				|
+				v
+Persistence	Probability
+Recommended	Approach
+Use	a	
+hybrid	approach
+:
+Extract	embeddings	with	a	pretrained	speech	model.
+
+Add	clinically	interpretable	hand-crafted	features.
+Train	an	XGBoost	or	LightGBM	risk	classifier.
+Use	SHAP	values	to	explain	predictions.
+This	approach	balances	data	efficiency,	accuracy,	and	interpretability.
+Label	Definition
+The	target	label	must	be	based	on	a	future	clinical	outcome,	not	on	the	current	recording.
+Baseline:	Child	age	4
+								|
+								v
+Speech	recording	and	feature	extraction
+								|
+								v
+Machine-learning	input
+								|
+								v
+Follow -up	at	age	6	or	7
+								|
+								v
+Outcome	label:
+0	=	Recovered
+1	=	Persistent
+This	setup	ensures	that	the	model	predicts	a	future	outcome	rather	than	simply	recognizing	current
+stuttering	severity.
+Train/Test	Splitting	Strategy
+A	major	methodological	risk	is	data	leakage.
+Incorrect	Split
+Child	A	-	Recording	1	->	Training	set
+Child	A	-	Recording	2	->	Test	set
+The	model	may	recognize	the	child’s	voice	rather	than	generalizable	speech	characteristics.
+Correct	Split
+Children	A,	B,	C,	D	->	Training	set
+Children	E,	F,	G,	H	->	Test	set
+All	recordings	from	one	child	must	remain	in	the	same	split.	Use	
+GroupKFold
+	or	
+StratifiedGroupKFold
+with	child	ID	as	the	group	variable.
+Evaluation	Metrics
+Metric
+Meaning
+Target
+Accuracy
+Overall	proportion	correctly	classified
+Above	75%
+Sensitivity	/	Recall
+Ability	to	identify	persistent	cases
+Above	80%
+
+Specificity
+Ability	to	identify	recovered	cases
+Above	70%
+Precision
+Reliability	of	predicted	persistent	cases
+Above	70%
+F1	Score
+Balance	of	precision	and	recall
+Above	75%
+ROC-AUC
+Discrimination	between	recovered	and
+persistent	cases
+Above	0.80
+PR-AUC
+Performance	in	imbalanced	data
+Report	alongside	ROC-AUC
+Brier	Score
+Probability	calibration
+Lower	is	better
+Calibration	Curve
+Agreement	of	risk	probability	with
+actual	outcome
+Well	calibrated
+Why	Calibration	Matters
+A	system	that	says	“70%	risk”	should	ideally	correspond	to	approximately	70%	of	comparable	children	having
+persistent	outcomes.	A	model	may	classify	correctly	but	still	provide	poorly	calibrated	probabilities,	which	is
+unsafe	for	clinical	decision	support.
+Ethical	Considerations
+Decision	Support,	Not	Diagnosis
+The	system	must	not	state	that	a	child	“will	definitely	have	persistent	stuttering.”	It	should	report	risk
+estimates	with	uncertainty	and	recommend	professional	assessment	when	needed.
+Privacy
+Child	speech	is	highly	sensitive	data.	Audio	should	be	encrypted	during	storage	and	transfer,	with	access
+control,	consent	procedures,	and	de-identification.
+Bias	and	Fairness
+Model	performance	should	be	analyzed	across:
+Age	groups.
+Sex.
+Language	and	dialect.
+Socioeconomic	setting.
+Recording-device	quality.
+Regional	accent,	including	Indian-English	and	Tamil-influenced	English	where	applicable.
+Parent	Communication
+Outputs	must	avoid	causing	unnecessary	anxiety.	Since	many	children	recover	naturally,	the	user	interface
+should	clearly	explain	that	risk	scores	are	not	diagnoses.
+Clinical	Governance
+A	qualified	speech-language	pathologist	must	remain	responsible	for	interpretation,	referral,	and	treatment
+decisions.
+Regulatory	Considerations
+
+For	commercial	deployment,	the	product	may	be	classified	as	Software	as	a	Medical	Device	(SaMD),
+depending	on	jurisdiction	and	intended	claims.
+Region
+Authority
+Key	Consideration
+India
+CDSCO
+Medical-device	classification,	clinical
+evidence,	software	quality
+United	States
+FDA
+Clinical	decision-support	vs	regulated
+medical-device	distinction
+European	Union
+MDR	/	CE	Mark
+Clinical	evaluation,	risk	management,
+post-market	monitoring
+Initially,	position	the	system	as	a	
+research	prototype
+	or	clinician-support	research	tool.	Avoid	marketing	it
+as	a	diagnostic	device	until	clinical	validation	and	regulatory	review	are	complete.
+Market	Opportunity
+The	speech	therapy	AI	market	was	reported	at	approximately	$2.8	billion	in	2025	and	projected	to	reach
+$12.4	billion	by	2034,	representing	a	reported	17.4%	CAGR.	The	broader	speech	therapy	services	market
+was	estimated	at	$41.1	billion	in	2025	and	projected	to	reach	$83.4	billion	by	2033.	(
+marketintelo.com
+)
+Segment
+Current	/	Base	Value
+Forecast
+Growth
+Speech	Therapy	AI
+$2.8B	in	2025
+$12.4B	by	2034
+17.4%	CAGR
+(
+marketintelo.com
+)
+Speech	Therapy
+Services
+$41.1B	in	2025
+$83.4B	by	2033
+9.3%	CAGR
+(
+grandviewresearch.com
+)
+AI	Voice	Therapy
+Exercise
+$1.01B	in	2025
+$2.31B	by	2029
+23.1%	CAGR
+(
+finance.yahoo.com
+)
+Speech	Therapy	EMR
+Software
+$0.6B	in	2025
+$1.2B	by	2034
+8.5%	CAGR
+(
+marketintelo.com
+)
+Market	estimates	from	commercial	reports	should	be	treated	as	directional	because	definitions	and
+methodology	vary	between	publishers.
+Competitive	Landscape
+Company	/	Product
+Main	Focus
+Gap	Relative	to	This	Project
+Iyaso	/	Eloquent
+AI-assisted	speech	therapy	for
+stuttering
+Therapy	delivery	rather	than	long-term
+persistence	prediction	(
+mid-day.com
+)
+Whispp
+Real-time	voice	reconstruction	for
+people	with	voice	and	speech
+disabilities
+Fluency	enhancement,	not	pediatric
+prognosis	(
+ioplus.nl
+)
+Virtual	Speech	Therapist
+Clinician-in-the-loop	assessment	and
+personalized	therapy
+Therapy	planning	rather	than
+longitudinal	persistence	modelling
+(
+arxiv.org
+)
+Lothgha
+Gamified	AI	speech	therapy
+Therapy	engagement	rather	than
+clinical	risk	stratification	(
+f6s.com
+)
+Phrasefluent
+Speech	disorder	identification
+Detection	rather	than
+persistence/recovery	prediction
+
+(
+pmc.ncbi.nlm.nih.gov
+)
+Market	Gap
+No	major	commercial	product	identified	in	this	review	is	specifically	positioned	as	an	AI	tool	for	predicting
+whether	early	childhood	stuttering	will	persist	versus	recover.	This	gives	the	project	a	meaningful	research
+and	product	differentiation	opportunity.
+Target	Users
+User
+Problem
+Value	Provided
+Speech-language	pathologists
+Time-consuming	assessment	and
+uncertain	prognosis
+Interpretable	risk	support
+Pediatricians
+Need	to	decide	on	referral	urgency
+Objective	early-screening	signal
+Parents
+Uncertainty	and	anxiety	after	onset
+Evidence-based	communication	and
+monitoring	plan
+Hospitals
+Limited	specialist	capacity
+Better	triage	and	prioritization
+Teletherapy	platforms
+Need	for	scalable	assessment
+workflows
+Remote	recording	and	risk-report
+integration
+Researchers
+Lack	of	benchmark	tools	for
+persistence	modelling
+Reproducible	AI	pipeline
+Proposed	Product	Features
+Minimum	Viable	Product
+Secure	audio	recording	upload.
+Audio-quality	check.
+Speech	preprocessing.
+Acoustic	and	timing	feature	extraction.
+Basic	disfluency	detection.
+Risk	score:	Low,	Moderate,	or	Elevated.
+SHAP-based	explanation	of	major	contributing	factors.
+Downloadable	clinician	report.
+Disclaimer	and	referral	guidance.
+Future	Features
+Multilingual	support:	English,	Tamil,	Hindi,	and	other	Indian	languages.
+Parent	questionnaire	for	onset	and	family	history.
+Teletherapy-platform	integration.
+Longitudinal	monitoring	dashboard.
+Speech-language	pathologist	review	and	feedback	workflow.
+Federated	learning	for	privacy-preserving	improvement.
+Mobile	application	for	clinic-supervised	recordings.
+Implementation	Timeline
+
+Phase
+Duration
+Major	Deliverables
+Literature	and	requirements
+Months	1–2
+Literature	review,	research
+protocol,	clinical	advisory	team
+Data	preparation
+Months	2–4
+SEP-28K	setup,	preprocessing,
+feature	pipeline
+Baseline	detection
+Months	3–5
+Disfluency	classifier	and
+benchmark	results
+Restricted-data	access
+Months	4–7
+IISRP/FluencyBank	application,
+ethics	and	DUA
+Persistence	model
+Months	6–10
+Child-level	prediction	model
+Validation
+Months	9–12
+Cross-validation,	calibration,
+fairness	analysis
+Prototype	interface
+Months	10–13
+Web	dashboard	and	risk	report
+Clinical	pilot
+Months	13–18
+Partner	clinic	evaluation	in
+Chennai
+Publication	and	product	planning
+Months	16–24
+Paper	submission,	regulatory
+strategy,	commercialization	plan
+Suggested	Technology	Stack
+Layer
+Technology
+Programming
+Python
+Audio	analysis
+librosa,	torchaudio,	Praat/parselmouth
+NLP
+spaCy,	NLTK,	Stanza
+Classical	ML
+scikit-learn,	XGBoost,	LightGBM
+Deep	learning
+PyTorch,	Hugging	Face	Transformers
+Speech	encoders
+Wav2Vec	2.0,	HuBERT,	Whisper
+Backend	API
+FastAPI
+Frontend
+React,	Next.js,	Streamlit,	or	Gradio
+Database
+PostgreSQL
+Storage
+Secure	cloud	object	storage
+Deployment
+Docker,	AWS/GCP/Azure	or	Indian	cloud	provider
+Expected	Outcomes
+Research	Outcomes
+A	reproducible	machine-learning	pipeline	for	childhood-stuttering	persistence	prediction.
+An	interpretable	benchmark	model	using	acoustic,	linguistic,	and	clinical	features.
+Comparison	of	audio-only,	transcript-enhanced,	and	multimodal	models.
+Evaluation	on	child-level,	leakage-free	datasets.
+A	research	paper	suitable	for	INTERSPEECH,	ICASSP,	JSLHR,	Journal	of	Fluency	Disorders,	or	digital-
+
+health	venues.
+Clinical	Outcomes
+Faster	preliminary	risk	stratification.
+Earlier	referral	of	children	at	elevated	risk.
+Reduced	unnecessary	intervention	for	likely	recoverers.
+Better	clinician	documentation	and	monitoring.
+More	evidence-based	counselling	for	parents.
+Business	Outcomes
+Potential	B2B	SaaS	tool	for	speech	clinics	and	pediatric	centers.
+Opportunity	to	integrate	with	teletherapy	and	speech-therapy	EMR	systems.
+Potential	to	build	India-focused	multilingual	pediatric	speech	assessment.
+Limitations	and	Risks
+Longitudinal	pediatric	datasets	are	small	and	often	restricted.
+Many	public	datasets	focus	on	adults,	podcasts,	or	event-level	detection	rather	than	child	persistence
+outcomes.
+Labels	may	vary	across	studies	depending	on	the	clinical	definition	of	recovery	and	persistence.
+Child	speech	differs	substantially	by	age,	accent,	language,	and	recording	conditions.
+The	number	of	recordings	may	be	large,	but	the	number	of	unique	children	may	be	small.
+There	is	a	high	risk	of	overfitting	unless	validation	is	performed	by	child.
+Models	may	not	generalize	from	English-speaking	datasets	to	Indian	children	without	local	validation.
+Clinical	usefulness	depends	on	interpretability,	calibration,	and	integration	with	SLP	judgment.
+Conclusion
+The	proposed	project	is	a	strong	research	and	healthcare-AI	idea	because	it	addresses	a	real	clinical	decision
+problem:	estimating	the	risk	that	early	childhood	stuttering	will	persist	rather	than	recover.	Existing
+longitudinal	research	supports	the	presence	of	measurable	persistence-related	factors,	while	emerging	AI
+work	demonstrates	growing	feasibility	for	automated	speech	and	disfluency	analysis.	(
+rcslt.org
+)
+The	project’s	novelty	lies	in	translating	known	clinical	predictors	into	an	automated,	interpretable,	child-level
+risk-prediction	pipeline.	The	strongest	path	is	to	begin	with	an	interpretable	baseline,	obtain	longitudinal
+pediatric	data	such	as	FluencyBank	IISRP,	validate	strictly	at	the	child	level,	and	position	the	tool	as	decision
+support	for	speech-language	pathologists—not	as	an	autonomous	diagnostic	system.	(
+arxiv.org
+)
+
+References
+AI-Based Early Prediction of Persistent Childhood Stuttering
+Machine Learning Approach for Pediatric Fluency Risk Assessment
+Compiled reference list — APA and IEEE formats, with clickable links
+Location: Chennai, Tamil Nadu, India  |  Date: August 2026
+This document lists every source cited in the project proposal, grouped by category. Each entry is given first in
+APA 7th-edition format, then in IEEE numbered format (numbers correspond to the mapping table on the final
+page). All links are clickable.
+
+
+1. Foundational Clinical Research on Persistence & Recovery
+1.1 Meta-Analysis & Systematic Reviews
+APA: Singer, C. M., Hessling, A., Kelly, E. M., Singer, L., & Jones, R. M. (2020). Clinical characteristics associated
+ with stuttering persistence: A meta-analysis. Journal of Speech, Language, and Hearing Research, 63(9),
+2995–3018.
+[1] Singer, C. M., Hessling, A., Kelly, E. M., Singer, L., & Jones, R. M. (2020). Clinical characteristics associated with
+ stuttering persistence: A meta-analysis. Journal of Speech, Language, and Hearing Research, 63(9),
+2995–3018. [Online]. Available: https://pubmed.ncbi.nlm.nih.gov/32853093/
+https://pubmed.ncbi.nlm.nih.gov/32853093/
+APA: Sugathan, J., & Maruthy, S. (2020). Predictive factors for persistence and recovery of stuttering in children: A
+ systematic review. International Journal of Speech-Language Pathology, 23(4), 359–371.
+[2] Sugathan, J., & Maruthy, S. (2020). Predictive factors for persistence and recovery of stuttering in children: A
+ systematic review. International Journal of Speech-Language Pathology, 23(4), 359–371. [Online]. Available:
+https://www.tandfonline.com/doi/abs/10.1080/17549507.2020.1761323
+https://www.tandfonline.com/doi/abs/10.1080/17549507.2020.1761323
+1.2 Key Longitudinal Studies
+APA: Yairi, E., & Ambrose, N. G. (1999). Early childhood stuttering I: Persistency and recovery rates. Journal of
+ Speech, Language, and Hearing Research, 42(5), 1097–1112.
+[3] Yairi, E., & Ambrose, N. G. (1999). Early childhood stuttering I: Persistency and recovery rates. Journal of Speech,
+ Language, and Hearing Research, 42(5), 1097–1112. [Online]. Available:
+https://pubmed.ncbi.nlm.nih.gov/10515508/
+https://pubmed.ncbi.nlm.nih.gov/10515508/
+APA: Yairi, E., & Ambrose, N. G. (2005). Early childhood stuttering II: Stability of stuttering over early childhood.
+ Journal of Speech, Language, and Hearing Research, 48(5), 1052–1067.
+[4] Yairi, E., & Ambrose, N. G. (2005). Early childhood stuttering II: Stability of stuttering over early childhood. Journal
+ of Speech, Language, and Hearing Research, 48(5), 1052–1067. [Online]. Available:
+https://pubmed.ncbi.nlm.nih.gov/16478333/
+https://pubmed.ncbi.nlm.nih.gov/16478333/
+APA: Yairi, E., Ambrose, N. G., & Niermann, R. M. (1993). Stuttering in preschool children: Natural history. Journal of
+ Speech and Hearing Research, 36(3), 494–507.
+[5] Yairi, E., Ambrose, N. G., & Niermann, R. M. (1993). Stuttering in preschool children: Natural history. Journal of
+ Speech and Hearing Research, 36(3), 494–507. [Online]. Available: https://pubmed.ncbi.nlm.nih.gov/8331909/
+https://pubmed.ncbi.nlm.nih.gov/8331909/
+1.3 Predictor Studies
+APA: Walsh, B., Usler, E., Bostian, A., Mohan, R., Gerwin, K. L., Brown, B., Weber, C., & Smith, A. (2018). What are
+ predictors for persistence in childhood stuttering? Seminars in Speech and Language, 39(4), 299–312.
+[6] Walsh, B., Usler, E., Bostian, A., Mohan, R., Gerwin, K. L., Brown, B., Weber, C., & Smith, A. (2018). What are
+ predictors for persistence in childhood stuttering? Seminars in Speech and Language, 39(4), 299–312. [Online].
+Available: https://www.thieme-connect.com/article/10.1055/s-0038-1666824
+https://www.thieme-connect.com/article/10.1055/s-0038-1666824
+APA: Lower sentence comprehension than word comprehension in preschool children who stutter predicts persistent
+ stuttering and stuttering severity at school-age. (2025). Journal of Fluency Disorders / Speech & Language
+
+
+[advance online publication].
+[7] Lower sentence comprehension than word comprehension in preschool children who stutter predicts persistent
+ stuttering and stuttering severity at school-age. (2025). Journal of Fluency Disorders / Speech & Language
+[advance online publication]. [Online]. Available:
+https://www.tandfonline.com/doi/full/10.1080/02699206.2025.2560630
+https://www.tandfonline.com/doi/full/10.1080/02699206.2025.2560630
+APA: Can stuttering on content versus function words predict stuttering persistence in young children? (2026).
+ Journal of Speech, Language, and Hearing Research [advance online publication].
+[8] Can stuttering on content versus function words predict stuttering persistence in young children? (2026). Journal
+ of Speech, Language, and Hearing Research [advance online publication]. [Online]. Available: https://discovery.r
+esearcher.life/article/can-stuttering-on-content-versus-function-words-predict-stuttering-persistence-in-young-chil
+dren/f4d5cf6803be3fc389e51c02eccc094b
+https://discovery.researcher.life/article/can-stuttering-on-content-versus-function-words-predict-stuttering-persistence-in-young
+-children/f4d5cf6803be3fc389e51c02eccc094b
+APA: Predicting the impact of stuttering in the school years. (2026). Frontiers in Psychology.
+ 
+[9] Predicting the impact of stuttering in the school years. (2026). Frontiers in Psychology. [Online]. Available:
+ https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1782752/full
+https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1782752/full
+APA: Unraveling the mystery of stuttering: Clinical and neurophysiological insights. (2026). Frontiers in Human
+ Neuroscience.
+[10] Unraveling the mystery of stuttering: Clinical and neurophysiological insights. (2026). Frontiers in Human
+ Neuroscience. [Online]. Available:
+https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2026.1700499/full
+https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2026.1700499/full
+2. AI / Machine Learning in Stuttering
+2.1 Systematic Reviews & Meta-Analyses
+APA: Advancing stuttering detection: A systematic review and meta-analysis. (2026). PubMed.
+ 
+[11] Advancing stuttering detection: A systematic review and meta-analysis. (2026). PubMed. [Online]. Available:
+ https://pubmed.ncbi.nlm.nih.gov/42190310/
+https://pubmed.ncbi.nlm.nih.gov/42190310/
+2.2 AI Detection & Prediction Papers
+APA: Apple Research. (2026). Predicting upcoming stuttering events from three-second audio: Stratified evaluation
+ reveals severity-selective precursors, and the model deploys fully on-device. arXiv preprint arXiv:2604.27279.
+[12] Apple Research. (2026). Predicting upcoming stuttering events from three-second audio: Stratified evaluation
+ reveals severity-selective precursors, and the model deploys fully on-device. arXiv preprint arXiv:2604.27279.
+[Online]. Available: https://arxiv.org/abs/2604.27279
+https://arxiv.org/abs/2604.27279
+APA: Paediatric-HGNN: A hybrid heterogeneous graph neural network for detecting disfluency in children’s speech
+ via multiscale acoustic fusion. (2026). arXiv preprint arXiv:2606.08210.
+[13] Paediatric-HGNN: A hybrid heterogeneous graph neural network for detecting disfluency in children’s speech via
+ multiscale acoustic fusion. (2026). arXiv preprint arXiv:2606.08210. [Online]. Available:
+https://arxiv.org/abs/2606.08210
+
+
+https://arxiv.org/abs/2606.08210
+APA: Deploying UDM series in real-life stuttered speech applications: A clinical evaluation framework. (2025). arXiv
+ preprint arXiv:2509.14304.
+[14] Deploying UDM series in real-life stuttered speech applications: A clinical evaluation framework. (2025). arXiv
+ preprint arXiv:2509.14304. [Online]. Available: https://arxiv.org/abs/2509.14304
+https://arxiv.org/abs/2509.14304
+APA: StutterFuse: Mitigating modality collapse in stuttering detection with Jaccard-weighted metric learning and
+ gated fusion. (2025). arXiv preprint arXiv:2512.13632.
+[15] StutterFuse: Mitigating modality collapse in stuttering detection with Jaccard-weighted metric learning and gated
+ fusion. (2025). arXiv preprint arXiv:2512.13632. [Online]. Available: https://arxiv.org/abs/2512.13632
+https://arxiv.org/abs/2512.13632
+APA: Can large audio language models understand child stuttering speech? Speech summarization, and source
+ separation. (2025). arXiv preprint arXiv:2510.20850.
+[16] Can large audio language models understand child stuttering speech? Speech summarization, and source
+ separation. (2025). arXiv preprint arXiv:2510.20850. [Online]. Available: https://arxiv.org/abs/2510.20850
+https://arxiv.org/abs/2510.20850
+APA: StutterZero and StutterFormer: End-to-end speech correction and disfluency detection. (2025). arXiv preprint
+ arXiv:2510.18938.
+[17] StutterZero and StutterFormer: End-to-end speech correction and disfluency detection. (2025). arXiv preprint
+ arXiv:2510.18938. [Online]. Available: https://arxiv.org/abs/2510.18938
+https://arxiv.org/abs/2510.18938
+APA: StuD: A multimodal approach for stuttering detection with transformer-based fusion. (2025). Proceedings of
+ IJCNLP.
+[18] StuD: A multimodal approach for stuttering detection with transformer-based fusion. (2025). Proceedings of
+ IJCNLP. [Online]. Available: https://aclanthology.org/2025.ijcnlp-long.39.pdf
+https://aclanthology.org/2025.ijcnlp-long.39.pdf
+3. Datasets & Data Resources
+3.1 FluencyBank (IISRP, Purdue, Teaching)
+APA: TalkBank / FluencyBank. FluencyBank English IISRP corpus.
+ 
+[19] TalkBank / FluencyBank. FluencyBank English IISRP corpus. [Online]. Available:
+ https://talkbank.org/fluency/access/Password/IISRP.html
+https://talkbank.org/fluency/access/Password/IISRP.html
+APA: TalkBank / FluencyBank. FluencyBank English Purdue corpus.
+ 
+[20] TalkBank / FluencyBank. FluencyBank English Purdue corpus. [Online]. Available:
+ https://talkbank.org/fluency/access/Purdue.html
+https://talkbank.org/fluency/access/Purdue.html
+APA: Resource web: Open data repositories for CSD research.
+ 
+[21] Resource web: Open data repositories for CSD research. [Online]. Available:
+ https://www.csdisseminate.com/Resources/CSD-Open-Data/
+https://www.csdisseminate.com/Resources/CSD-Open-Data/
+
+
+3.2 SEP-28K (Apple)
+APA: Apple Research. SEP-28K: A dataset for stuttering event detection. GitHub repository.
+ 
+[22] Apple Research. SEP-28K: A dataset for stuttering event detection. GitHub repository. [Online]. Available:
+ https://github.com/apple/ml-sep-28k
+https://github.com/apple/ml-sep-28k
+3.3 UCLASS Corpus
+APA: UCLASS corpus. Used in Paediatric-HGNN and other pediatric stuttering detection studies (access via
+ research collaboration).
+[23] UCLASS corpus. Used in Paediatric-HGNN and other pediatric stuttering detection studies (access via research
+ collaboration). [Online]. Available: https://arxiv.org/abs/2606.08210
+https://arxiv.org/abs/2606.08210
+4. Market & Industry Reports
+4.1 Speech Therapy AI & Services
+APA: MarketIntelo. (2033 forecast report). Speech therapy AI market research report.
+ 
+[24] MarketIntelo. (2033 forecast report). Speech therapy AI market research report. [Online]. Available:
+ https://marketintelo.com/report/speech-therapy-ai-market
+https://marketintelo.com/report/speech-therapy-ai-market
+APA: Grand View Research. (2026–2033 forecast). Speech therapy services market report.
+ 
+[25] Grand View Research. (2026–2033 forecast). Speech therapy services market report. [Online]. Available:
+ https://www.grandviewresearch.com/industry-analysis/speech-therapy-services-market-report
+https://www.grandviewresearch.com/industry-analysis/speech-therapy-services-market-report
+APA: Stratistics Market Research Consulting. Speech therapy software market forecasts to 2034.
+ 
+[26] Stratistics Market Research Consulting. Speech therapy software market forecasts to 2034. [Online]. Available: 
+ https://www.marketresearch.com/Stratistics-Market-Research-Consulting-v4058/Speech-Therapy-Software-Fore
+casts-Global-44783698/
+https://www.marketresearch.com/Stratistics-Market-Research-Consulting-v4058/Speech-Therapy-Software-Forecasts-Global-
+44783698/
+APA: Yahoo Finance. (2025). AI generated voice therapy exercise research report 2025.
+ 
+[27] Yahoo Finance. (2025). AI generated voice therapy exercise research report 2025. [Online]. Available:
+ https://finance.yahoo.com/news/ai-generated-voice-therapy-exercise-162700870.html
+https://finance.yahoo.com/news/ai-generated-voice-therapy-exercise-162700870.html
+APA: The Business Research Company. (2026). Stuttering treatment global market report.
+ 
+[28] The Business Research Company. (2026). Stuttering treatment global market report. [Online]. Available:
+ https://www.giiresearch.com/report/tbrc1994782-stuttering-treatment-global-market-report.html
+https://www.giiresearch.com/report/tbrc1994782-stuttering-treatment-global-market-report.html
+APA: MarketIntelo. Speech therapy EMR software market research report 2033.
+ 
+[29] MarketIntelo. Speech therapy EMR software market research report 2033. [Online]. Available:
+ https://marketintelo.com/report/speech-therapy-emr-software-market
+https://marketintelo.com/report/speech-therapy-emr-software-market
+
+
+5. Clinical Guidelines & Resources
+APA: Royal College of Speech and Language Therapists. (2025). Stammering and cluttering references.
+ 
+[30] Royal College of Speech and Language Therapists. (2025). Stammering and cluttering references. [Online].
+ Available: https://www.rcslt.org/members/clinical-guidance/stammering-and-cluttering/stammering-and-cluttering-
+references/
+https://www.rcslt.org/members/clinical-guidance/stammering-and-cluttering/stammering-and-cluttering-references/
+APA: Unseen Progress / StutterStrong. (2026). Does the age my child started stuttering predict recovery?
+ 
+[31] Unseen Progress / StutterStrong. (2026). Does the age my child started stuttering predict recovery? [Online].
+ Available: https://unseenprogress.com/research/stutterstrong/age-of-onset-effects-on-recovery/
+https://unseenprogress.com/research/stutterstrong/age-of-onset-effects-on-recovery/
+APA: Unseen Progress / StutterStrong. (2026). Severity trajectory and natural recovery vs. persistent stuttering.
+ 
+[32] Unseen Progress / StutterStrong. (2026). Severity trajectory and natural recovery vs. persistent stuttering.
+ [Online]. Available: https://unseenprogress.com/research/stutterstrong/natural-recovery-vs-persistent-stuttering/
+https://unseenprogress.com/research/stutterstrong/natural-recovery-vs-persistent-stuttering/
+APA: We Stutter. (2025). Rethinking early stuttering support for young children.
+ 
+[33] We Stutter. (2025). Rethinking early stuttering support for young children. [Online]. Available:
+ https://www.westutter.org/post/early-stuttering-parent-support-study
+https://www.westutter.org/post/early-stuttering-parent-support-study
+6. Startups & Commercial Products
+APA: Iyaso. (2025). AI solution for stammering: Iyaso launches ‘Eloquent’ speech therapy app.
+ 
+[34] Iyaso. (2025). AI solution for stammering: Iyaso launches ‘Eloquent’ speech therapy app. [Online]. Available:
+ https://www.tmv.in/article/ai-solution-for-stammering-iyaso-launches-eloquent-speech-therapy-app-date=2025-12-20
+https://www.tmv.in/article/ai-solution-for-stammering-iyaso-launches-eloquent-speech-therapy-app-date=2025-12-20
+APA: Mid-Day. From quantum computing to speech therapy: The founder using AI to help people with stuttering.
+ 
+[35] Mid-Day. From quantum computing to speech therapy: The founder using AI to help people with stuttering.
+ [Online]. Available: https://www.mid-day.com/buzzfeed/article/from-quantum-computing-to-speech-therapy-the-fo
+under-using-ai-to-help-people-with-stuttering-and-speak-with-confidence-8396
+https://www.mid-day.com/buzzfeed/article/from-quantum-computing-to-speech-therapy-the-founder-using-ai-to-help-people-wi
+th-stuttering-and-speak-with-confidence-8396
+APA: Voice reconstruction startup Whispp secures €2.5 million grant.
+ 
+[36] Voice reconstruction startup Whispp secures €2.5 million grant. [Online]. Available:
+ https://ioplus.nl/en/posts/voice-reconstruction-startup-whispp-secures-25-million-grant-
+https://ioplus.nl/en/posts/voice-reconstruction-startup-whispp-secures-25-million-grant-
+APA: Virtual Speech Therapist (VST): A clinician-in-the-loop AI speech therapy agent. (2026). arXiv preprint
+ arXiv:2605.01101.
+[37] Virtual Speech Therapist (VST): A clinician-in-the-loop AI speech therapy agent. (2026). arXiv preprint
+ arXiv:2605.01101. [Online]. Available: https://arxiv.org/abs/2605.01101
+https://arxiv.org/abs/2605.01101
+APA: F6S. (2025). 7 top speech therapy companies · December 2025.
+ 
+[38] F6S. (2025). 7 top speech therapy companies · December 2025. [Online]. Available:
+ https://www.f6s.com/companies/speech-therapy/mo
+
+
+https://www.f6s.com/companies/speech-therapy/mo
+7. Additional Academic Sources
+APA: Stuttering: The nature of the speech disruptions—a multimodal perspective. (2025). PMC.
+ 
+[39] Stuttering: The nature of the speech disruptions—a multimodal perspective. (2025). PMC. [Online]. Available:
+ https://pmc.ncbi.nlm.nih.gov/articles/PMC12454410/
+https://pmc.ncbi.nlm.nih.gov/articles/PMC12454410/
+APA: Unraveling the linguistic locus of stuttering from childhood to adulthood: A longitudinal & positional analysis.
+ (2025). DRUM, University of Maryland.
+[40] Unraveling the linguistic locus of stuttering from childhood to adulthood: A longitudinal & positional analysis.
+ (2025). DRUM, University of Maryland. [Online]. Available:
+https://drum.lib.umd.edu/items/39d1d196-1ad7-46ed-9236-1c83367878e7
+https://drum.lib.umd.edu/items/39d1d196-1ad7-46ed-9236-1c83367878e7
+APA: Risk of stuttering onset and persistence linked to early language. (2025). Erasmus University Rotterdam
+ (EUR.nl).
+[41] Risk of stuttering onset and persistence linked to early language. (2025). Erasmus University Rotterdam
+ (EUR.nl). [Online]. Available:
+https://pure.eur.nl/en/publications/risk-of-stuttering-onset-and-persistence-linked-to-early-language/
+https://pure.eur.nl/en/publications/risk-of-stuttering-onset-and-persistence-linked-to-early-language/
+APA: A review of auditory evoked potentials and artificial intelligence in stuttering. (2026). Holistic Recreation.
+ 
+[42] A review of auditory evoked potentials and artificial intelligence in stuttering. (2026). Holistic Recreation. [Online].
+ Available: https://holisticrecreation.com/index.php/pub/article/view/122
+https://holisticrecreation.com/index.php/pub/article/view/122
+
+
+How These Sources Were Used
+The table below maps each section of the project proposal to the primary supporting sources (numbers refer to
+the IEEE numbering used throughout this document, in the order each source first appears above).
+Section in Proposal
+Primary Sources
+Recovery rates (75–80%)
+[3], [4]
+Predictors (family history, onset age, severity)
+[1], [6]
+Sentence comprehension predictor
+[8]
+Content vs. function words
+[9]
+AI detection performance (86.9% accuracy)
+[15]
+Upcoming-event prediction (AUC 0.655)
+[16]
+Paediatric-HGNN (82.4% accuracy)
+[17]
+UDM clinical deployment (87% acceptance)
+[18]
+Datasets (IISRP, SEP-28K, UCLASS)
+[24]–[27]
+Market size figures
+[28]–[33]
+Startups (Iyaso, Whispp, VST)
+[38]–[42]
+Total sources compiled: 42
+
+

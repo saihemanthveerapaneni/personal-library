@@ -1,0 +1,122 @@
+/* BookReader.css */
+/* Keep PAD_X=32, PAD_TOP=36, FOOTER=28 in sync with BookReader.jsx */
+
+.reader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 0 24px;
+}
+
+.reader-status {
+  padding: 48px 0;
+  text-align: center;
+  color: #5b5f6b;
+}
+
+.book {
+  filter: drop-shadow(0 18px 28px rgba(20, 24, 40, 0.35));
+}
+
+/* ---------- paper ---------- */
+.page {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 32px 0; /* PAD_TOP / PAD_X */
+  background-color: #f8f4ea;
+  color: #2a2620;
+  overflow: hidden;
+}
+
+/* darken toward the spine so the two pages feel like one bound book */
+.page.left {
+  background-image: linear-gradient(to left, rgba(60, 45, 20, 0.16), rgba(60, 45, 20, 0) 9%);
+}
+.page.right {
+  background-image: linear-gradient(to right, rgba(60, 45, 20, 0.16), rgba(60, 45, 20, 0) 9%);
+}
+
+.page-text {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  font: 17px/1.6 Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  white-space: pre-wrap;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.page-num {
+  flex: 0 0 28px; /* FOOTER */
+  line-height: 28px;
+  text-align: center;
+  font: 12px/28px Georgia, serif;
+  color: #8a8474;
+}
+
+/* hidden element used to measure how much text fits on a page */
+.page-text.probe {
+  position: absolute;
+  left: -99999px;
+  top: 0;
+  height: auto;
+  flex: none;
+  overflow: visible;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ---------- covers ---------- */
+.page.cover {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 28px;
+  background-color: #1f2a44;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.25));
+  color: #e9d9a6;
+  border: 1px solid #141c30;
+}
+.cover-title {
+  margin: 0 0 14px;
+  font: 600 28px/1.2 Georgia, serif;
+  letter-spacing: 0.02em;
+}
+.cover-author {
+  margin: 0;
+  font: italic 17px/1.4 Georgia, serif;
+  opacity: 0.85;
+}
+
+/* ---------- controls ---------- */
+.reader-controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: #3b3f4a;
+  font-size: 14px;
+}
+.reader-controls button {
+  padding: 8px 16px;
+  border: 1px solid #1f2a44;
+  border-radius: 6px;
+  background: #1f2a44;
+  color: #f8f4ea;
+  font: inherit;
+  cursor: pointer;
+}
+.reader-controls button:hover:not(:disabled) {
+  background: #2c3a5e;
+}
+.reader-controls button:focus-visible {
+  outline: 3px solid #7aa2ff;
+  outline-offset: 2px;
+}
+.reader-controls button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
